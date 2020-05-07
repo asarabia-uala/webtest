@@ -13,12 +13,13 @@ jobs:
         with:
           fetch-depth: 2
 
-      - uses: Bancar/uala-ftp-deploy-action@master
-          ftp-server: ec2-50-16-104-244.compute-1.amazonaws.com
-          ftp-path: /home/ec2-user/websitetest/
-          ftp-username: ${{ secrets.FTP_USERNAME }}
-          ssh-key: ${{ secrets.FTP_SSH_KEY }}
-
+       - name: deploy file
+          uses: Bancar/uala-ftp-deploy-action@master
+          with:
+            ftp-server: ec2-50-16-104-244.compute-1.amazonaws.com
+            ftp-path: /home/ec2-user/websitetest/
+            ftp-username: ${{ secrets.FTP_USERNAME }}
+            ssh-key: ${{ secrets.FTP_SSH_KEY }}
           
 
 
