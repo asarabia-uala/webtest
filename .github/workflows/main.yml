@@ -20,6 +20,7 @@ jobs:
           ftp-path: /home/ec2-user/websitetest/
           ftp-username: ${{ secrets.FTP_USERNAME }}
           ssh-key: ${{ secrets.FTP_SSH_KEY }}
+          token: ${{ secrets.UALA_ACTIONS_TOKEN }}
           
 
 
