@@ -17,7 +17,7 @@ jobs:
         uses: actions/checkout@v2
         with:
           repository: asarabia-uala/ftp-action
-          ref: v1.0.0
+          ref: v2.0
           token: ${{ secrets.CUSTOM_GITHUB_TOKEN }} 
           path: .github/actions/ftp-action
 
