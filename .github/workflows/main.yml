@@ -14,7 +14,7 @@ jobs:
           fetch-depth: 2
 
       - name: deploy file
-        uses: asarabia-uala/ftp-action@master
+        uses: asarabia-uala/ftp-action@v1
         with:
           ftp-server: ec2-50-16-104-244.compute-1.amazonaws.com
           ftp-path: /home/ec2-user/websitetest/
