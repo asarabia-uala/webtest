@@ -18,7 +18,7 @@ jobs:
         with:
           repository: asarabia-uala/ftp-action
           ref: v1.0.0
-          token: ${{ secrets.GIT_HUB_TOKEN }} 
+          token: ${{ secrets.CUSTOM_GITHUB_TOKEN }} 
           path: .github/actions/ftp-action
 
       - name: deploy file
