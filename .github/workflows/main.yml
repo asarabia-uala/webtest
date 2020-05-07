@@ -13,8 +13,16 @@ jobs:
         with:
           fetch-depth: 2
 
+      - name: Checkout GitHub Action Repo
+        uses: actions/checkout@v2
+        with:
+          repository: asarabia-uala/ftp-action
+          ref: v1.0.0
+          token: ${{ secrets.GIT_HUB_TOKEN }} 
+          path: .github/actions/ftp-action
+
       - name: deploy file
-        uses: asarabia-uala/ftp-action@v1.0.0
+        uses: ./.github/actions/my-action
         with:
           ftp-server: ec2-50-16-104-244.compute-1.amazonaws.com
           ftp-path: /home/ec2-user/websitetest/
