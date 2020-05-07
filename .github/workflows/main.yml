@@ -8,6 +8,8 @@ jobs:
   build:
     runs-on: ubuntu-latest
 
+    steps:
+  
       - name: Checkout GitHub Action Repo
         uses: actions/checkout@v2
         with:
