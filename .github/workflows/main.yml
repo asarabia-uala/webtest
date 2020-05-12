@@ -25,7 +25,12 @@ jobs:
         uses: kielabokkie/ssh-key-and-known-hosts-action@v1
         with:
           ssh-private-key: ${{ secrets.FTP_SSH_KEY }}
-          ssh-host: ec2-50-16-104-244.compute-1.amazonaws.co
+          ssh-host: ec2-50-16-104-244.compute-1.amazonaws.com
+  
+      - name: Configure Host
+        run: sh .github/actions/ftp-action/configure_host.sh
+        working-directory: ./.github/actions/ftp-action
+
 
       - name: Deploy FTP
         uses: ./.github/actions/ftp-action
