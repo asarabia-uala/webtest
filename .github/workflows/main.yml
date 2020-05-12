@@ -7,11 +7,12 @@ on:
 jobs:
   build:
     runs-on: ubuntu-18.04
-
+    
     steps:
-      - uses: actions/checkout@v2.1.0
+      - name: Checkout Branch
+        uses: actions/checkout@v2
         with:
-          fetch-depth: 2
+          fetch-depth: 0
   
       - name: Checkout GitHub Action Repo
         uses: actions/checkout@v2
@@ -30,7 +31,6 @@ jobs:
       - name: Configure Host
         run: sh configure_host.sh
         working-directory: .github/actions/ftp-action
-
 
       - name: Deploy FTP
         uses: ./.github/actions/ftp-action
