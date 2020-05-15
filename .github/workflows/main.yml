@@ -39,4 +39,4 @@ jobs:
           ftp-path: /home/ec2-user/websitetest/
           ftp-username: ${{ secrets.FTP_USERNAME }}
           slack-webhook: ${{ secrets.SLACK_WEBHOOK }}
-          action-status: ${{ job.status }}
+          action-status: ${{ job.status }} 
