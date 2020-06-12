@@ -14,15 +14,14 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout TG-Action
-          uses: actions/checkout@v2
-          with:
-            path: tg-action
-            repository: asarabia-uala/tg-action
-            token: ${{ secrets.CUSTOM_GITHUB_TOKEN }}
+        uses: actions/checkout@v2
+        with:
+          path: tg-action
+          repository: asarabia-uala/tg-action
+          token: ${{ secrets.CUSTOM_GITHUB_TOKEN }}
 
       - name: Plan
         uses: ./tg-action
         with:
           path-to-hcl: arg/dev/vpc
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          
