@@ -13,6 +13,11 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
     steps:
+
+      - uses: webfactory/ssh-agent@v0.3.0
+        with:
+          ssh-private-key: ${{ secrets.CUSTOM_KEY }}
+
       - name: Checkout TG-Action
         uses: actions/checkout@v2
         with:
