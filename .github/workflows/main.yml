@@ -1,7 +1,5 @@
 name: CI
-on:
-  pull_request:
-    types: [unlocked]
+on: pull_request_review
 
 jobs:
   deploy:
