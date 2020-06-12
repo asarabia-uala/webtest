@@ -1,42 +1,18 @@
 name: CI
-
 on:
-  push:
-    branches: [ master]
+  pull_request:
+    types: [unlocked]
 
 jobs:
-  build:
-    runs-on: ubuntu-18.04
-    
+  deploy:
+    runs-on: ubuntu-latest
     steps:
-      - name: Checkout Branch
-        uses: actions/checkout@v2
+      - uses: khan/pull-request-comment-trigger@master
+        id: check
         with:
-          fetch-depth: 0
-  
-      - name: Checkout GitHub Action Repo
-        uses: actions/checkout@v2
-        with:
-          repository: asarabia-uala/ftp-action
-          ref: master
-          token: ${{ secrets.CUSTOM_GITHUB_TOKEN }} 
-          path: .github/actions/ftp-action
-      
-      - name: Setup SSH Key
-        uses: kielabokkie/ssh-key-and-known-hosts-action@v1
-        with:
-          ssh-private-key: ${{ secrets.FTP_SSH_KEY }}
-          ssh-host: ec2-50-16-104-244.compute-1.amazonaws.com
-  
-      - name: Configure Host
-        run: sh configure_host.sh
-        working-directory: .github/actions/ftp-action
-
-      - name: Deploy FTP
-        uses: ./.github/actions/ftp-action
-        with:
-          ftp-server: ec2-50-16-104-244.compute-1.amazonaws.com
-          ftp-path: /home/ec2-user/websitetest/
-          ftp-username: ${{ secrets.FTP_USERNAME }}
-          slack-webhook: ${{ secrets.SLACK_WEBHOOK }}
-          action-status: ${{ job.status }} 
+          trigger: '@deploy'
+          reaction: rocket
+        env:
+          GITHUB_TOKEN: '${{ secrets.GITHUB_TOKEN }}'
+      - run: 'echo Found it!'
+        if: steps.check.outputs.triggered == 'true'
